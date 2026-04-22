@@ -1,6 +1,8 @@
 package com.ola.noteBook.notes
 
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -47,5 +49,9 @@ public class NoteController(private val noteService: NoteService) {
         val response = noteService.getUserNotes(ownerId)
         val
         return
+    }
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id : String) {
+        noteService.deleteNote(id)
     }
 }

@@ -23,4 +23,7 @@ class NoteService(private val noteRepository : NoteRepository) {
     fun getUserNotes(ownerId: String) : List<Note>{
         return noteRepository.findByOwnerId(ownerId = ownerId)
     }
+    fun deleteNote(noteId: String){
+        noteRepository.deleteById(noteId)
+    }
 }
