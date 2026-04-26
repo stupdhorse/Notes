@@ -1,7 +1,8 @@
 package com.ola.noteBook.notes
 
-import org.springframework.data.mongodb.repository.MongoRepository
+import kotlinx.coroutines.flow.Flow
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface NoteRepository : MongoRepository<Note, String> {
-    fun findByOwnerId(ownerId : String) : List<Note>
+interface NoteRepository : CoroutineCrudRepository<Note, String> {
+    fun findByOwnerId(ownerId : String) : Flow<Note>
 }

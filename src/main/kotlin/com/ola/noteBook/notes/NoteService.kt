@@ -1,5 +1,6 @@
 package com.ola.noteBook.notes
 
+import kotlinx.coroutines.flow.Flow
 import org.springframework.stereotype.Service
 
 data class CreateNoteCommand(
@@ -10,7 +11,7 @@ data class CreateNoteCommand(
 )
 @Service
 class NoteService(private val noteRepository : NoteRepository) {
-    fun createNote(command: CreateNoteCommand) : Note{
+    suspend fun createNote(command: CreateNoteCommand) : Note{
         val newNote = Note(
             title = command.title,
             content = command.content,
@@ -20,10 +21,10 @@ class NoteService(private val noteRepository : NoteRepository) {
         return noteRepository.save(newNote)
     }
 
-    fun getUserNotes(ownerId: String) : List<Note>{
+    fun getUserNotes(ownerId: String) : Flow<Note> {
         return noteRepository.findByOwnerId(ownerId = ownerId)
     }
-    fun deleteNote(noteId: String){
+    suspend fun deleteNote(noteId: String){
         noteRepository.deleteById(noteId)
     }
 }
