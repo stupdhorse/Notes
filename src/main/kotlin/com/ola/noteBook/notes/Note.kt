@@ -19,5 +19,6 @@ data class Note (
     val createdAt: Instant? = null,
     @Id
     val id: String? = null,
-    val ownerId : String
+    val ownerId : String,
+    val backlinks : Set<String> = emptySet()
 )
