@@ -35,7 +35,11 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
     testImplementation("com.tngtech.archunit:archunit-junit5:1.4.0")
     testImplementation("io.mockk:mockk:1.13.8")
+    implementation("org.springframework.boot:spring-boot-starter")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.testcontainers:testcontainers-mongodb:2.0.5")
 
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
